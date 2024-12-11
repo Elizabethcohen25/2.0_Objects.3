@@ -65,9 +65,9 @@ private Astronaut astro2;
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");
-		astro3Pic = Toolkit.getDefaultToolkit().getImage("astro 3.jpg");
-		backgroundPic = Toolkit.getDefaultToolkit().getImage("stars.jpeg");
+		astroPic = Toolkit.getDefaultToolkit().getImage("cupcake.png");
+		astro3Pic = Toolkit.getDefaultToolkit().getImage("Chewy-Chocolate-Chip-Cookies-139-2.jpg");
+		backgroundPic = Toolkit.getDefaultToolkit().getImage("bakery.jpg");
 		astro = new Astronaut(200,500);
 		astro2 = new Astronaut(200,600);
 
@@ -101,13 +101,23 @@ private Astronaut astro2;
 		astro2.wrap();
 
 	}
+
+
 	public void collisions(){
-		if(astro.rec.intersects(astro2.rec)) {
+		if(astro.rec.intersects(astro2.rec)&& astro.isCrashing == false) {
 			System.out.println("explosion!!!!");
 			astro.dx = -astro.dx;
 			astro.dy = -astro.dy;
 			astro2.dx = -astro2.dx;
 			astro2.dy = -astro2.dy;
+			astro.width=astro.width +100;
+			//astro.height=astro.height +100;
+			astro2.dx = astro2.dx+5;
+			astro.isCrashing = true;
+		}
+		if(!astro.rec.intersects(astro2.rec)) {
+			astro.isCrashing=false;
+
 		}
 	}
    //Pauses or sleeps the computer for the amount specified in milliseconds
